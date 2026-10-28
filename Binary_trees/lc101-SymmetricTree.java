@@ -1,0 +1,12 @@
+class Solution {
+    public boolean ismirror(TreeNode left,TreeNode right){
+        if(left==null&&right==null) return true;
+        if((left==null&&right!=null)||(left!=null&&right==null)) return false;
+        if(left.val!=right.val) return false;
+        return ismirror(left.left,right.right) && ismirror(left.right,right.left);
+    }
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null) return true;
+        return ismirror(root.left,root.right);
+    }
+}
