@@ -1,0 +1,36 @@
+class MinStack {
+    int[] arr;
+    int[] minstack;
+    int top;
+    int mintop;
+    public MinStack() {
+        arr = new int[100000];
+        minstack = new int[100000];
+        top=-1;
+        mintop=-1;
+    }
+    
+    public void push(int val) {
+        arr[++top] = val;
+        if(mintop==-1 ||val <= minstack[mintop]){
+            minstack[++mintop] = val;
+        }
+    }
+    
+    public void pop() {
+        if(top==-1) return;
+        int popped = arr[top];
+        top--;
+        if(mintop!=-1 && popped==minstack[mintop]){
+            mintop--;
+        }     
+    }
+    
+    public int top() {
+        return arr[top];
+    }
+    
+    public int getMin() {
+        return minstack[mintop];
+    }
+}
